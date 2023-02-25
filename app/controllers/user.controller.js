@@ -2,6 +2,48 @@ const db = require("../models");
 const User = db.users;
 const Op = db.Sequelize.Op;
 
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+// const { User } = require('../sequelize');
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  console.log(email, password);
+  const user = await User.findOne({
+    where: {
+      email
+    }
+  });
+
+  if (!user) {
+    return res.status(404).json({
+      message: 'User not found'
+    });
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) {
+    return res.status(401).json({
+      message: 'Incorrect password'
+    });
+  }
+
+  const token = jwt.sign({
+    id: user.id,
+    email: user.email
+  }, 'secret_key', {
+    expiresIn: '1h'
+  });
+
+  return res.json({
+    message: 'Login successful',
+    token
+  });
+};
+
+
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request

@@ -69,21 +69,21 @@
 
 
 // // Retrieve all Tutorials from the database.
-// exports.findAll = (req, res) => {
-//   const District = req.query.District;
-//   var condition = District? { full_name: { [Op.iLike]: `%${District}%` } } : null;
+// // exports.findAll = (req, res) => {
+// //   const District = req.query.District;
+// //   var condition = District? { District: { [Op.iLike]: `%${District}%` } } : null;
 
-//   Complaint.findAll({ where: condition })
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while retrieving users."
-//       });
-//     });
-// };
+// //   Complaint.findAll({ where: condition })
+// //     .then(data => {
+// //       res.send(data);
+// //     })
+// //     .catch(err => {
+// //       res.status(500).send({
+// //         message:
+// //           err.message || "Some error occurred while retrieving users."
+// //       });
+// //     });
+// // };
 
 
 // // Find a single Tutorial with an id

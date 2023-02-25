@@ -20,5 +20,5 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = require("./user.model.js")(sequelize, Sequelize);
-// db.users = require("./complaint.model.js")(sequelize, Sequelize);
+// db.complaints = require("./complaint.model.js")(sequelize, Sequelize);
 module.exports = db;

@@ -24,9 +24,18 @@ module.exports = app => {
   // Create a new Tutorial
   router.delete("/", users.deleteAll);
 
+  router.post('/login', users.login);
+
   app.use("/api/users", router);
 };
 
+// const express = require('express');
+// const { login } = require('../controllers/user.controller.js');
+
+// const router = express.Router();
+
+
+// module.exports = router;
 
 // module.exports = app => {
 //   const complaints = require("../controllers/complaint.controller.js");
