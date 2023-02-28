@@ -1,13 +1,13 @@
 module.exports = app => {
   const users = require("../controllers/user.controller.js");
-
+  const Complaints = require("../controllers/complaint.controller.js");
   var router = require("express").Router();
 
   // Create a new Tutorial
   router.post("/", users.create);
 
   // Retrieve all Tutorials
-  router.get("/", users.findAll);
+  router.get("/users", users.findAll);
 
   // Retrieve all published Tutorials
   router.get("/published", users.findAllPublished);
@@ -24,6 +24,25 @@ module.exports = app => {
   // Create a new Tutorial
   router.delete("/", users.deleteAll);
 
+
+  router.post("/create-complaints", Complaints.create);
+
+  // Retrieve all Tutorials
+  router.get("/complaints", Complaints.findAll);
+  // Retrieve all published Tutorials
+  router.get("/published",Complaints.findAllPublished);
+
+  // Retrieve a single Tutorial with id
+  router.get("/complaint/:id",Complaints.findOne);
+
+  // Update a Tutorial with id
+  router.put("/complaint/update/:id", Complaints.update);
+
+  // Delete a Tutorial with id
+  router.delete("/complaint/:id", Complaints.delete);
+
+  // Create a new Tutorial
+  router.delete("/complaint/del", Complaints.deleteAll);
   router.post('/login', users.login);
 
   app.use("/api/users", router);
@@ -35,7 +54,7 @@ module.exports = app => {
 // const router = express.Router();
 
 
-// module.exports = router;
+// // module.exports = router;
 
 // module.exports = app => {
 //   const complaints = require("../controllers/complaint.controller.js");
@@ -43,25 +62,7 @@ module.exports = app => {
 //   var router = require("express").Router();
 
 //   // Create a new Tutorial
-//   router.post("/", complaints.create);
-
-//   // Retrieve all Tutorials
-//   router.get("/", complaints.findAll);
-
-//   // Retrieve all published Tutorials
-//   router.get("/published", complaints.findAllPublished);
-
-//   // Retrieve a single Tutorial with id
-//   router.get("/:id",complaints.findOne);
-
-//   // Update a Tutorial with id
-//   router.put("/:id", complaints.update);
-
-//   // Delete a Tutorial with id
-//   router.delete("/:id", complaints.delete);
-
-//   // Create a new Tutorial
-//   router.delete("/", complaints.deleteAll);
+ 
 
 //   app.use("/api/complaints", router);
 // };

@@ -55,7 +55,7 @@ exports.create = (req, res) => {
   }
 
 
-  // Create a Tutorial
+  // Create a user
   const user = {
     full_name: req.body.full_name,
     cnic: req.body.cnic,
@@ -65,6 +65,7 @@ exports.create = (req, res) => {
     mobile: req.body.mobile,
     password: req.body.password,
     email: req.body.email,
+    
     published: req.body.published ? req.body.published : false
   };
 
@@ -82,7 +83,7 @@ exports.create = (req, res) => {
 };
 
 
-// Retrieve all Tutorials from the database.
+// Retrieve all users from the database.
 exports.findAll = (req, res) => {
   const full_name = req.query.full_name;
   var condition = full_name ? { full_name: { [Op.iLike]: `%${full_name}%` } } : null;
@@ -100,7 +101,7 @@ exports.findAll = (req, res) => {
 };
 
 
-// Find a single Tutorial with an id
+// Find a single user with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -122,7 +123,7 @@ exports.findOne = (req, res) => {
 };
 
 
-// Update a Tutorial by the id in the request
+// Update a user by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -132,7 +133,7 @@ exports.update = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was updated successfully."
+          message: "User was updated successfully."
         });
       } else {
         res.send({
@@ -147,7 +148,7 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a Tutorial with the specified id in the request
+// Delete a user with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
