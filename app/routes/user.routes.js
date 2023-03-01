@@ -28,7 +28,7 @@ module.exports = app => {
   router.post("/create-complaints", Complaints.create);
 
   // Retrieve all Tutorials
-  router.get("/complaints", Complaints.findAll);
+  router.get("/complaints/findall", Complaints.findAll);
   // Retrieve all published Tutorials
   router.get("/published",Complaints.findAllPublished);
 
